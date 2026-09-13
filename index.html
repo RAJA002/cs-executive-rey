@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rey's Case File — CS Executive, Group 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- ===== Binder rail (nav) ===== -->
+    <nav class="rail" aria-label="Sections">
+      <div class="rail-brand">
+        <span class="rail-mark">§</span>
+        <span class="rail-title">Rey's<br>Case File</span>
+      </div>
+      <button class="rail-tab is-active" data-view="cover">Cover</button>
+      <button class="rail-tab" data-view="chat">Ask a Doubt</button>
+      <button class="rail-tab" data-view="quiz">Quiz</button>
+      <button class="rail-tab" data-view="cards">Flashcards</button>
+      <button class="rail-tab" data-view="progress">Progress</button>
+      <div class="rail-foot">Group 2 &middot; 2022 Syllabus</div>
+    </nav>
+
+    <!-- ===== Main ledger page ===== -->
+    <main class="page">
+
+      <!-- ---------- COVER ---------- -->
+      <section class="view is-active" id="view-cover">
+        <div class="cover">
+          <div class="stamp">Filed for</div>
+          <h1 class="cover-name">Rey</h1>
+          <p class="cover-sub">A small case file, built to help you take Group 2 apart — paper by paper, question by question.</p>
+
+          <div class="ribbons">
+            <div class="ribbon" style="--tag:#8A6A2E">
+              <span class="ribbon-no">Paper 5</span>
+              <span class="ribbon-name">Capital Market &amp; Securities Laws</span>
+            </div>
+            <div class="ribbon" style="--tag:#6E2A33">
+              <span class="ribbon-no">Paper 6</span>
+              <span class="ribbon-name">Economic, Commercial &amp; IP Laws</span>
+            </div>
+            <div class="ribbon" style="--tag:#3B5C4B">
+              <span class="ribbon-no">Paper 7</span>
+              <span class="ribbon-name">Tax Laws &amp; Practice</span>
+            </div>
+          </div>
+
+          <div class="cover-actions">
+            <button class="btn btn-primary" data-goto="quiz">Start a quiz</button>
+            <button class="btn" data-goto="chat">Ask a doubt</button>
+          </div>
+
+          <p class="cover-note">Everything here lives in this browser tab — nothing is sent anywhere except your questions to the AI tutor, once you add a key for that.</p>
+        </div>
+      </section>
+
+      <!-- ---------- CHAT ---------- -->
+      <section class="view" id="view-chat">
+        <header class="view-head">
+          <h2>Ask a doubt</h2>
+          <p>A tutor for Group 2 topics — Capital Market, Economic/Commercial/IP Laws, and Tax.</p>
+        </header>
+
+        <div class="key-box" id="keyBox">
+          <p><strong>One-time setup:</strong> this tutor calls the Anthropic API directly from your browser, using your own API key. The key stays in this tab's memory only — it's never saved to disk or sent anywhere but Anthropic.</p>
+          <div class="key-row">
+            <input type="password" id="apiKeyInput" placeholder="sk-ant-..." autocomplete="off" />
+            <button class="btn btn-primary" id="saveKeyBtn">Save for this session</button>
+          </div>
+          <p class="key-hint">Get a key at <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a>. Don't commit a real key into the GitHub repo — this box is meant to be filled in live, per device.</p>
+        </div>
+
+        <div class="chat-log" id="chatLog">
+          <div class="msg msg-bot">
+            Hi Rey — ask me anything about Group 2: securities law, competition/IP/FEMA topics, GST, income tax, whatever's stuck. I'll explain it plainly, not just recite the section number.
+          </div>
+        </div>
+
+        <form class="chat-form" id="chatForm">
+          <textarea id="chatInput" rows="1" placeholder="e.g. What's the difference between tax evasion and tax avoidance?"></textarea>
+          <button class="btn btn-primary" type="submit">Send</button>
+        </form>
+      </section>
+
+      <!-- ---------- QUIZ ---------- -->
+      <section class="view" id="view-quiz">
+        <header class="view-head">
+          <h2>Quiz</h2>
+          <p>Pick a paper, or mix all three. Instant feedback after each answer.</p>
+        </header>
+
+        <div class="filter-row" id="quizFilters"></div>
+
+        <div id="quizArea"></div>
+      </section>
+
+      <!-- ---------- FLASHCARDS ---------- -->
+      <section class="view" id="view-cards">
+        <header class="view-head">
+          <h2>Flashcards</h2>
+          <p>Click a card to flip it. Use the arrows to move on.</p>
+        </header>
+
+        <div class="filter-row" id="cardFilters"></div>
+
+        <div id="cardArea"></div>
+      </section>
+
+      <!-- ---------- PROGRESS ---------- -->
+      <section class="view" id="view-progress">
+        <header class="view-head">
+          <h2>Progress</h2>
+          <p>A quick read on this session. Resets when the tab is closed — ask for a persistent version once this is hosted on GitHub Pages.</p>
+        </header>
+
+        <div id="progressArea"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
